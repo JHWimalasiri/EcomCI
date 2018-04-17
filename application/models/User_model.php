@@ -26,7 +26,34 @@ class User_model extends CI_Model{
 
     }
 
-    public function agent_register(){
+    public function agent_register($enc_password){
+
+        // User data array
+        $data = array(
+            'username' => $this->input->post('username'),
+            'password' => $enc_password,
+            'user_role_id' => 1,
+
+
+        );
+
+        $insert1 = $this->db->insert('user', $data);
+
+        $data = array(
+
+            'agent_first_name' => $this->input->post('email'),
+            'agent_last_name' => $this->input->post('email'),
+            'agent_email' => $this->input->post('email'),
+            'agent_phone_num' => $this->input->post('email'),
+            'agent_business_name' => $this->input->post('email'),
+            'agent_nic' => $this->input->post('email'),
+            'agent_license' => $this->input->post('email'),
+            'user_username' => $this->input->post('username')
+        );
+
+        // Insert user
+        $insert2 = $this->db->insert('agent', $data);
+        return $insert1;$insert2;
 
     }
 

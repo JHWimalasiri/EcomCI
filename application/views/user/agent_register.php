@@ -1,17 +1,7 @@
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Gzone Technologies</title>
+<?php echo validation_errors(); ?>
 
-    <link rel="stylesheet" type="text/css" href="/assets/styles/style.css" media="all"/>
-    <link href="/assets/css/font-awesome.css" rel="stylesheet">
-
-</head>
-
-<body>
-
-<!-- content -->
 <div class="main_content">
+    <?php echo form_open('user/agent_register'); ?>
     <div class="reg">
         <div id="black">
             <h1 style="text-align :center; color: white;"><b>Become an Agent of Gzone Technologies & earn profit</b></h1>
@@ -22,8 +12,6 @@
                 You could be a part of this process through registering with with us as an agent.<br>
                 You could also earn a commission from participating in the process! </h4>
         </div>
-
-        <form class = "register-form" action = "agent/includes/agentval.php" method="POST">
 
             <div class="container">
                 <h2 class="heading_reg">Agent Registration</h2>
@@ -55,8 +43,8 @@
                         <li><input type="file" id="pic" name="pic" accept="image/*"></li>
                         <br> -->
                         <!-- <br> -->
-                        <li><label for="uname"> <b> Username <span class="req">*</span></b> </label></li>
-                        <li><input type="varchar" size="50" id="uname" name="uname"  required autocomplete="off"></li>
+                        <li><label for="username"> <b> Username <span class="req">*</span></b> </label></li>
+                        <li><input type="varchar" size="50" id="username" name="username"  required autocomplete="off"></li>
                         <li><label for="pwd"> <b>Password </b> <span class="req">*</span></label></li>
                         <li><input type="password" size="50" id="pwd" name="pwd"  required autocomplete="off"></li>
                         <br>
@@ -64,26 +52,16 @@
                         <li><input type="password" size="50" id="repwd" name="repwd"  required autocomplete="off"></li>
                     </ul>
                     <br>
-
-                    <!-- <form method="get" action="../../index.php"> -->
-
-                    <input type="submit" name = "register" value="Request For Register">
-                    <!-- <button>Register</button> -->
-                    <!--
-                                    </form> -->
-
+                    <button type="submit" class="btn btn-primary btn-block">Request For Register</button>
 
                     <br>
                     Already have an account?  <a href="<?php echo base_url('User/login'); ?>"> Sign in </a>
                 </div>
             </div>
     </div>
-    </form>>
 </div>
 
 <!-- footer -->
+<?php echo form_close(); ?>
 
 
-
-</body>
-</html>

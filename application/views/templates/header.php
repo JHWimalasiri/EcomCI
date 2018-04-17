@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <title>Gzone Technologies</title>
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/styles/style.css" media="all"/>
 	<link href="<?php echo base_url(); ?>/assets/css/font-awesome.css" rel="stylesheet">
 </head>
