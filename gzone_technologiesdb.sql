@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2017 at 07:04 PM
+-- Generation Time: Apr 22, 2018 at 09:29 PM
 -- Server version: 10.1.24-MariaDB
 -- PHP Version: 7.1.6
 
@@ -25,42 +25,43 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `agent`
 --
 
 CREATE TABLE `agent` (
   `agent_id` int(11) NOT NULL,
-  `agent_first_name` varchar(50) NOT NULL,
+  `agent_first_name` varchar(50) DEFAULT NULL,
   `agent_middle_name` varchar(50) DEFAULT NULL,
-  `agent_last_name` varchar(50) NOT NULL,
-  `agent_email` varchar(50) NOT NULL,
-  `agent_profile_image` longblob,
-  `cart_id` int(11) DEFAULT NULL,
-  `deposit_amount_id` int(11) DEFAULT NULL,
+  `agent_last_name` varchar(50) DEFAULT NULL,
+  `agent_email` varchar(50) DEFAULT NULL,
   `agent_address_id` int(11) DEFAULT NULL,
   `agent_phone_num` varchar(45) DEFAULT NULL,
   `agent_business_name` varchar(45) DEFAULT NULL,
-  `user_username` varchar(45) NOT NULL,
   `agent_nic` varchar(45) DEFAULT NULL,
   `agent_license` varchar(45) DEFAULT NULL,
-  `status` varchar(45) DEFAULT NULL
+  `status` varchar(45) DEFAULT NULL,
+  `user_username` varchar(45) NOT NULL,
+  `admin_profile_image` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `agent`
 --
 
-INSERT INTO `agent` (`agent_id`, `agent_first_name`, `agent_middle_name`, `agent_last_name`, `agent_email`, `agent_profile_image`, `cart_id`, `deposit_amount_id`, `agent_address_id`, `agent_phone_num`, `agent_business_name`, `user_username`, `agent_nic`, `agent_license`, `status`) VALUES
-(1, 'vfg', 'heth', 'ht', 'hrtj', NULL, NULL, NULL, NULL, 'kyk', NULL, '', NULL, NULL, NULL),
-(2, '', NULL, '', '', NULL, NULL, NULL, NULL, '', NULL, '', NULL, NULL, NULL),
-(3, '', NULL, '', 'gegg', NULL, NULL, NULL, NULL, '', NULL, '', NULL, NULL, NULL),
-(4, '', NULL, '', 'fg@gmail.com', NULL, NULL, NULL, NULL, '', NULL, '', NULL, NULL, NULL),
-(5, '', NULL, '', 'dj@gmail.com', NULL, NULL, NULL, NULL, '', NULL, '', NULL, NULL, NULL),
-(6, '', NULL, '', 'js@gmail.com', NULL, NULL, NULL, NULL, '', NULL, '', NULL, NULL, NULL),
-(7, '', NULL, '', 'jp@gmail.com', NULL, NULL, NULL, NULL, '', NULL, '', NULL, NULL, NULL),
-(8, '', NULL, '', 'hg@gmail.com', NULL, NULL, NULL, NULL, '', NULL, '', NULL, NULL, NULL),
-(9, '', NULL, '', 'kd@gmail.com', NULL, NULL, NULL, NULL, '', NULL, '', NULL, NULL, NULL),
-(10, '', NULL, '', 'jd@gmail.com', NULL, NULL, NULL, NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `agent` (`agent_id`, `agent_first_name`, `agent_middle_name`, `agent_last_name`, `agent_email`, `agent_address_id`, `agent_phone_num`, `agent_business_name`, `agent_nic`, `agent_license`, `status`, `user_username`, `admin_profile_image`) VALUES
+(1, 'kl@gmail.com', NULL, 'kl@gmail.com', 'kl@gmail.com', NULL, 'kl@gmail.com', 'kl@gmail.com', 'kl@gmail.com', 'kl@gmail.com', NULL, 'kl', NULL);
 
 -- --------------------------------------------------------
 
@@ -82,13 +83,13 @@ CREATE TABLE `agent_address` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `agent_rating`
+-- Table structure for table `amout_to_be_deposit`
 --
 
-CREATE TABLE `agent_rating` (
-  `agent_rating_id` int(11) NOT NULL,
-  `content` varchar(100) DEFAULT NULL,
-  `agent_id` int(11) NOT NULL
+CREATE TABLE `amout_to_be_deposit` (
+  `to_deposit_id` int(11) NOT NULL,
+  `total_amount` int(20) DEFAULT NULL,
+  `agent_agent_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -111,6 +112,16 @@ CREATE TABLE `category` (
   `cat_id` int(11) NOT NULL,
   `cat_name` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`cat_id`, `cat_name`) VALUES
+(1, 'Mobile & Tablets'),
+(2, 'Computer & Laptops'),
+(3, 'Electronics'),
+(4, 'Other Products');
 
 -- --------------------------------------------------------
 
@@ -164,28 +175,23 @@ CREATE TABLE `customer` (
   `customer_middle_name` varchar(50) DEFAULT NULL,
   `customer_last_name` varchar(50) DEFAULT NULL,
   `customer_email` varchar(50) NOT NULL,
-  `customer_profile_image` varchar(500) DEFAULT NULL,
-  `cart_id` int(11) DEFAULT NULL,
-  `customer_phone_num` varchar(45) NOT NULL,
+  `customer_phone_num` varchar(45) DEFAULT NULL,
   `customer_address_id` int(11) DEFAULT NULL,
-  `customer_password` varchar(20) NOT NULL,
-  `customer_username` varchar(45) NOT NULL
+  `user_username` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`customer_id`, `customer_first_name`, `customer_middle_name`, `customer_last_name`, `customer_email`, `customer_profile_image`, `cart_id`, `customer_phone_num`, `customer_address_id`, `customer_password`, `customer_username`) VALUES
-(3, NULL, NULL, NULL, 'rc@gmail.com', NULL, NULL, '', NULL, '$2y$10$7JcPMZSoh7Cje', 'Roy'),
-(4, NULL, NULL, NULL, 'gh@gmail.com', NULL, NULL, '', NULL, '$2y$10$HK2FMxDMkHct1', 'girh'),
-(5, NULL, NULL, NULL, 'al@gmail.com', NULL, NULL, '', NULL, '$2y$10$JMSE7Tb5eEx0G', 'alan'),
-(6, NULL, NULL, NULL, 'jh@gmail.com', NULL, NULL, '', NULL, '$2y$10$IKJAbVImedVYT', 'dhy'),
-(7, NULL, NULL, NULL, 'asd@gmail.com', NULL, NULL, '', NULL, '$2y$10$POILjsDPidKUl', 'SORJSLK'),
-(8, NULL, NULL, NULL, 'dklfgj@gmail.com', NULL, NULL, '', NULL, '$2y$10$kd3kLfNkSwxch', 'kjdfq'),
-(9, NULL, NULL, NULL, 'sfdg@gmail.com', NULL, NULL, '', NULL, '$2y$10$.ixYNcciGEphX', 'sfdklgj'),
-(10, NULL, NULL, NULL, 'sdf@gmail.com', NULL, NULL, '', NULL, '$2y$10$ny.odRM0osS5J', 'klsdf'),
-(11, NULL, NULL, NULL, 'gjj@gmail.com', NULL, NULL, '', NULL, '$2y$10$0Rer69fnBkrNb', 'grhre');
+INSERT INTO `customer` (`customer_id`, `customer_first_name`, `customer_middle_name`, `customer_last_name`, `customer_email`, `customer_phone_num`, `customer_address_id`, `user_username`) VALUES
+(1, NULL, NULL, NULL, 'blah@hotmail.com', NULL, NULL, 'blah'),
+(2, NULL, NULL, NULL, 'gt@gmail.com', NULL, NULL, 'Duck'),
+(3, NULL, NULL, NULL, 'df@gmail.com', NULL, NULL, 'jehan'),
+(4, NULL, NULL, NULL, 'ae@gmail.com', NULL, NULL, 'funny'),
+(5, NULL, NULL, NULL, 'gh@gmail.com', NULL, NULL, 'Gimhani'),
+(6, NULL, NULL, NULL, 'ds@gmail.com', NULL, NULL, 'Danny'),
+(7, NULL, NULL, NULL, 'lk@gmail.com', NULL, NULL, 'Larry');
 
 -- --------------------------------------------------------
 
@@ -195,11 +201,11 @@ INSERT INTO `customer` (`customer_id`, `customer_first_name`, `customer_middle_n
 
 CREATE TABLE `customer_address` (
   `id` int(11) NOT NULL,
-  `house_number` int(11) NOT NULL,
-  `street_name` varchar(50) NOT NULL,
-  `city` varchar(50) NOT NULL,
+  `house_number` int(11) DEFAULT NULL,
+  `street_name` varchar(50) DEFAULT NULL,
+  `city` varchar(50) DEFAULT NULL,
   `country` varchar(50) DEFAULT NULL,
-  `postal_code` varchar(30) NOT NULL
+  `postal_code` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -210,24 +216,10 @@ CREATE TABLE `customer_address` (
 
 CREATE TABLE `delivery_method` (
   `delivery_method_id` int(11) NOT NULL,
-  `type` tinyint(4) NOT NULL,
+  `type` enum('1','0') NOT NULL,
   `collection_point_id` int(11) NOT NULL,
   `courier_id` int(11) NOT NULL,
-  `status` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `deposit_amount`
---
-
-CREATE TABLE `deposit_amount` (
-  `id` int(11) NOT NULL,
-  `commission` decimal(10,0) DEFAULT NULL,
-  `deposit_amount` decimal(10,0) DEFAULT NULL,
-  `status` tinyint(4) NOT NULL,
-  `cash_collected` decimal(10,0) DEFAULT NULL
+  `status` enum('1','0') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -253,12 +245,14 @@ CREATE TABLE `online_payment` (
 
 CREATE TABLE `order` (
   `order_id` int(11) NOT NULL,
-  `order_date` date NOT NULL,
-  `order_quantity` int(11) NOT NULL,
-  `order_price` decimal(10,0) NOT NULL,
+  `order_date` date DEFAULT NULL,
+  `order_quantity` int(11) DEFAULT NULL,
+  `order_price` decimal(10,0) DEFAULT NULL,
   `delivery_method_id` int(11) NOT NULL,
   `payment_id` int(11) NOT NULL,
-  `order_discount` decimal(10,0) DEFAULT NULL
+  `order_discount` decimal(10,0) DEFAULT NULL,
+  `user_username` varchar(45) NOT NULL,
+  `status` enum('1','0') NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -269,7 +263,8 @@ CREATE TABLE `order` (
 
 CREATE TABLE `order_has_product` (
   `order_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL
+  `product_id` int(11) NOT NULL,
+  `quantity` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -280,7 +275,7 @@ CREATE TABLE `order_has_product` (
 
 CREATE TABLE `payment_method` (
   `payment_method_id` int(11) NOT NULL,
-  `type` tinyint(4) NOT NULL,
+  `type` enum('1','0') NOT NULL,
   `payment_amount` decimal(10,0) NOT NULL,
   `cash_on_delivery_id` int(11) NOT NULL,
   `online_payment_id` int(11) NOT NULL,
@@ -295,28 +290,30 @@ CREATE TABLE `payment_method` (
 
 CREATE TABLE `product` (
   `product_id` int(11) NOT NULL,
-  `product_name` varchar(45) NOT NULL,
-  `product_description` varchar(100) DEFAULT '0',
+  `product_name` varchar(100) NOT NULL,
+  `product_description` varchar(250) DEFAULT '0',
   `product_price` int(11) DEFAULT '0',
-  `product_model` varchar(25) DEFAULT '0',
+  `product_keywords` varchar(60) DEFAULT '0',
   `product_image` varchar(500) DEFAULT '0',
   `product_dicount` decimal(10,0) DEFAULT '0',
   `segment_id` int(11) DEFAULT '0',
   `product_quantity` int(11) DEFAULT '0',
-  `category_id` int(11) DEFAULT '0'
+  `category_id` int(11) DEFAULT '0',
+  `status` enum('1','0') DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `product_rating`
+-- Dumping data for table `product`
 --
 
-CREATE TABLE `product_rating` (
-  `product_rating_id` int(11) NOT NULL,
-  `content` varchar(100) DEFAULT NULL,
-  `product_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `product` (`product_id`, `product_name`, `product_description`, `product_price`, `product_keywords`, `product_image`, `product_dicount`, `segment_id`, `product_quantity`, `category_id`, `status`) VALUES
+(1, 'Wireless Mouse', 'sdfkb sjdjksd skjbdas asdkfjjsba askdbas sfdkbs sfsakbf', 1200, 'computer , accessories, mouse', '1.jpeg', '0', 4, 20, 2, '1'),
+(2, 'Beats EP Headphones', 'sdfskn djfksd dff dfld fdsfldfj fsdlfsd fdslfhds fdlfdsf dflxlf dsflfdjfl ', 19000, 'headphones , electronics', '2.jpg', '0', 11, 10, 3, '1'),
+(3, 'Tracker Drone Phantom', 'vdjbn dfjdkjsfb dfkjsjfd sfdkf dfkbdj efdfkdsb fedfkdf', 7500, 'drone , camera , electronics', '3.jpg', '0', 8, 10, 3, '1'),
+(4, ' Anti Theft Bag', 'dvs fdskfh sdlcjds sdsdflj dldsfj dfldk dffldfj dfdlfdfj flfdfk dlffdf', 5000, 'other products, bag , backpack', '4.jpg', '10', 13, 20, 4, '1'),
+(5, 'iPhone X', 'fdh dkjsj efdks fks dksjf dfdlk dfldkh dfdflh dsfkjkdjh', 179950, 'mobile , iphone', '5.jpg', '0', 1, 30, 1, '1'),
+(6, 'Samsung s6', 'dkghhgh dineineun fneunnij', 34000, 'mobile', '6.jpg', '0', 1, 4, 1, '1'),
+(7, 'LED 24', 'fjjghbb fhbubgb ubrgubu', 50000, 'screen', '7.jpg', '0', 6, 2, 2, '1');
 
 -- --------------------------------------------------------
 
@@ -326,20 +323,28 @@ CREATE TABLE `product_rating` (
 
 CREATE TABLE `segment` (
   `segment_id` int(11) NOT NULL,
-  `segment_name` varchar(45) NOT NULL
+  `segment_name` varchar(45) NOT NULL,
+  `category_cat_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `shopping_cart`
+-- Dumping data for table `segment`
 --
 
-CREATE TABLE `shopping_cart` (
-  `shopping_cart_id` int(11) NOT NULL,
-  `cart_cost` decimal(10,0) DEFAULT NULL,
-  `order_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `segment` (`segment_id`, `segment_name`, `category_cat_id`) VALUES
+(1, 'Mobile & Tablets', 1),
+(2, 'Mobile & Tablets Accessories', 1),
+(3, 'Other Smart Devices', 1),
+(4, 'Computer Accessories', 2),
+(5, 'Datacards & Routers', 2),
+(6, 'Storage', 2),
+(7, 'Gaming', 2),
+(8, 'Camera', 3),
+(9, 'Audio & Video Accessories', 3),
+(10, 'Speakers', 3),
+(11, 'Headphones', 3),
+(12, 'Personal Care Applications', 3),
+(13, 'Other Products', 4);
 
 -- --------------------------------------------------------
 
@@ -349,17 +354,23 @@ CREATE TABLE `shopping_cart` (
 
 CREATE TABLE `user` (
   `username` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
+  `password` varchar(128) NOT NULL,
   `user_role_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`username`, `password`, `user_role_id`) VALUES
-('jjjg7h', '3gthr', 2),
-('rgreh', '$2y$10$MDIshG.ZNDZ6Xc6sHJVWeu/Uxgwarn/NBuKzaY', 2);
+('blah', '202cb962ac59075b964b07152d234b70', 2),
+('Danny', '81dc9bdb52d04dc20036dbd8313ed055', 2),
+('Duck', 'f97ca8decb3a5f04d11d0e3c6ff3f0cd', 2),
+('funny', '289dff07669d7a23de0ef88d2f7129e7', 2),
+('Gimhani', '202cb962ac59075b964b07152d234b70', 2),
+('jehan', '202cb962ac59075b964b07152d234b70', 2),
+('kl', '202cb962ac59075b964b07152d234b70', 1),
+('Larry', '202cb962ac59075b964b07152d234b70', 2);
 
 -- --------------------------------------------------------
 
@@ -370,28 +381,31 @@ INSERT INTO `user` (`username`, `password`, `user_role_id`) VALUES
 CREATE TABLE `user_role` (
   `id` int(11) NOT NULL,
   `type` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user_role`
 --
 
 INSERT INTO `user_role` (`id`, `type`) VALUES
-(1, 'admin'),
-(2, 'customer'),
-(3, 'agent');
+(1, 'agent'),
+(2, 'customer');
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `agent`
 --
 ALTER TABLE `agent`
   ADD PRIMARY KEY (`agent_id`),
-  ADD KEY `fk_agent_cart1_idx` (`cart_id`),
-  ADD KEY `fk_agent_deposit_amount1_idx` (`deposit_amount_id`),
   ADD KEY `fk_agent_agent_address1_idx` (`agent_address_id`),
   ADD KEY `fk_agent_user1_idx` (`user_username`);
 
@@ -402,10 +416,11 @@ ALTER TABLE `agent_address`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `agent_rating`
+-- Indexes for table `amout_to_be_deposit`
 --
-ALTER TABLE `agent_rating`
-  ADD PRIMARY KEY (`agent_rating_id`);
+ALTER TABLE `amout_to_be_deposit`
+  ADD PRIMARY KEY (`to_deposit_id`),
+  ADD KEY `fk_amout_to_be_deposit_agent1_idx` (`agent_agent_id`);
 
 --
 -- Indexes for table `cash_on_delivery`
@@ -423,7 +438,8 @@ ALTER TABLE `category`
 -- Indexes for table `collection_point`
 --
 ALTER TABLE `collection_point`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_collection_point_agent1_idx` (`agent_id`);
 
 --
 -- Indexes for table `courier`
@@ -443,8 +459,8 @@ ALTER TABLE `courier_serviceprovider`
 --
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`customer_id`),
-  ADD KEY `fk_customer_cart1_idx` (`cart_id`),
-  ADD KEY `fk_customer_address1_idx` (`customer_address_id`);
+  ADD KEY `fk_customer_address1_idx` (`customer_address_id`),
+  ADD KEY `fk_customer_user1_idx` (`user_username`);
 
 --
 -- Indexes for table `customer_address`
@@ -461,12 +477,6 @@ ALTER TABLE `delivery_method`
   ADD KEY `fk_delivery_method_courier1_idx` (`courier_id`);
 
 --
--- Indexes for table `deposit_amount`
---
-ALTER TABLE `deposit_amount`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `online_payment`
 --
 ALTER TABLE `online_payment`
@@ -478,7 +488,8 @@ ALTER TABLE `online_payment`
 ALTER TABLE `order`
   ADD PRIMARY KEY (`order_id`),
   ADD KEY `fk_order_delivery_method1_idx` (`delivery_method_id`),
-  ADD KEY `fk_order_payment1_idx` (`payment_id`);
+  ADD KEY `fk_order_payment1_idx` (`payment_id`),
+  ADD KEY `fk_order_user1_idx` (`user_username`);
 
 --
 -- Indexes for table `order_has_product`
@@ -506,24 +517,11 @@ ALTER TABLE `product`
   ADD KEY `fk_product_category1_idx` (`category_id`);
 
 --
--- Indexes for table `product_rating`
---
-ALTER TABLE `product_rating`
-  ADD PRIMARY KEY (`product_rating_id`),
-  ADD KEY `fk_product_rating_product1_idx` (`product_id`);
-
---
 -- Indexes for table `segment`
 --
 ALTER TABLE `segment`
-  ADD PRIMARY KEY (`segment_id`);
-
---
--- Indexes for table `shopping_cart`
---
-ALTER TABLE `shopping_cart`
-  ADD PRIMARY KEY (`shopping_cart_id`),
-  ADD KEY `fk_shopping_cart_order1_idx` (`order_id`);
+  ADD PRIMARY KEY (`segment_id`),
+  ADD KEY `fk_segment_category1_idx` (`category_cat_id`);
 
 --
 -- Indexes for table `user`
@@ -543,15 +541,20 @@ ALTER TABLE `user_role`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `agent`
 --
 ALTER TABLE `agent`
-  MODIFY `agent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `agent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `agent_rating`
+-- AUTO_INCREMENT for table `amout_to_be_deposit`
 --
-ALTER TABLE `agent_rating`
-  MODIFY `agent_rating_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `amout_to_be_deposit`
+  MODIFY `to_deposit_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `cash_on_delivery`
 --
@@ -561,7 +564,7 @@ ALTER TABLE `cash_on_delivery`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `collection_point`
 --
@@ -576,7 +579,7 @@ ALTER TABLE `courier_serviceprovider`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `customer_address`
 --
@@ -587,11 +590,6 @@ ALTER TABLE `customer_address`
 --
 ALTER TABLE `delivery_method`
   MODIFY `delivery_method_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `deposit_amount`
---
-ALTER TABLE `deposit_amount`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `online_payment`
 --
@@ -611,22 +609,17 @@ ALTER TABLE `payment_method`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `product_rating`
---
-ALTER TABLE `product_rating`
-  MODIFY `product_rating_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `segment`
 --
 ALTER TABLE `segment`
-  MODIFY `segment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `segment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
--- AUTO_INCREMENT for table `shopping_cart`
+-- AUTO_INCREMENT for table `user_role`
 --
-ALTER TABLE `shopping_cart`
-  MODIFY `shopping_cart_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `user_role`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
@@ -636,8 +629,19 @@ ALTER TABLE `shopping_cart`
 --
 ALTER TABLE `agent`
   ADD CONSTRAINT `fk_agent_agent_address1` FOREIGN KEY (`agent_address_id`) REFERENCES `agent_address` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_agent_cart1` FOREIGN KEY (`cart_id`) REFERENCES `shopping_cart` (`shopping_cart_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_agent_deposit_amount1` FOREIGN KEY (`deposit_amount_id`) REFERENCES `deposit_amount` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_agent_user1` FOREIGN KEY (`user_username`) REFERENCES `user` (`username`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `amout_to_be_deposit`
+--
+ALTER TABLE `amout_to_be_deposit`
+  ADD CONSTRAINT `fk_amout_to_be_deposit_agent1` FOREIGN KEY (`agent_agent_id`) REFERENCES `agent` (`agent_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `collection_point`
+--
+ALTER TABLE `collection_point`
+  ADD CONSTRAINT `fk_collection_point_agent1` FOREIGN KEY (`agent_id`) REFERENCES `agent` (`agent_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `courier`
@@ -650,7 +654,7 @@ ALTER TABLE `courier`
 --
 ALTER TABLE `customer`
   ADD CONSTRAINT `fk_customer_address1` FOREIGN KEY (`customer_address_id`) REFERENCES `customer_address` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_customer_cart1` FOREIGN KEY (`cart_id`) REFERENCES `shopping_cart` (`shopping_cart_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_customer_user1` FOREIGN KEY (`user_username`) REFERENCES `user` (`username`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `delivery_method`
@@ -664,7 +668,8 @@ ALTER TABLE `delivery_method`
 --
 ALTER TABLE `order`
   ADD CONSTRAINT `fk_order_delivery_method1` FOREIGN KEY (`delivery_method_id`) REFERENCES `delivery_method` (`delivery_method_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_order_payment1` FOREIGN KEY (`payment_id`) REFERENCES `payment_method` (`payment_method_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_order_payment1` FOREIGN KEY (`payment_id`) REFERENCES `payment_method` (`payment_method_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_order_user1` FOREIGN KEY (`user_username`) REFERENCES `user` (`username`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `order_has_product`
@@ -688,16 +693,10 @@ ALTER TABLE `product`
   ADD CONSTRAINT `fk_product_segment1` FOREIGN KEY (`segment_id`) REFERENCES `segment` (`segment_id`) ON DELETE SET NULL ON UPDATE SET NULL;
 
 --
--- Constraints for table `product_rating`
+-- Constraints for table `segment`
 --
-ALTER TABLE `product_rating`
-  ADD CONSTRAINT `fk_product_rating_product1` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `shopping_cart`
---
-ALTER TABLE `shopping_cart`
-  ADD CONSTRAINT `fk_shopping_cart_order1` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `segment`
+  ADD CONSTRAINT `fk_segment_category1` FOREIGN KEY (`category_cat_id`) REFERENCES `category` (`cat_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `user`
