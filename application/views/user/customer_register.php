@@ -23,7 +23,7 @@
                     <button type="submit" class="btn btn-primary btn-block">Register</button>
 <!--                        <input type="submit" name="register" value="Register">-->
                     <br>
-                    Already have an account?  <a href="login.php"> Sign in </a>
+                    Already have an account?  <a href="login"> Sign in </a>
                 </div>
             </div>
         </div>
