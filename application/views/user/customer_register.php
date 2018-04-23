@@ -1,16 +1,3 @@
-<html>
-<head>
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
-<!--    <title>Gzone Technologies</title>-->
-<!---->
-<!--    <link rel="stylesheet" type="text/css" href="/assets/styles/style.css" media="all"/>-->
-<!--    <link href="/assets/css/font-awesome.css" rel="stylesheet">-->
-
-</head>
-
-<body>
-
-<!-- content -->
 <?php echo validation_errors(); ?>
 
 <div class="main_content">
@@ -36,14 +23,12 @@
                     <button type="submit" class="btn btn-primary btn-block">Register</button>
 <!--                        <input type="submit" name="register" value="Register">-->
                     <br>
-                    Already have an account?  <a href="login.php"> Sign in </a>
+                    Already have an account?  <a href="login"> Sign in </a>
                 </div>
             </div>
         </div>
-    <?php echo form_close(); ?>
 </div>
+    <?php echo form_close(); ?>
 
 
 
-</body>
-</html>

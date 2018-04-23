@@ -19,7 +19,7 @@
                 <br>
                 <button type="submit" class="btn btn-primary btn-block">Login</button>
                 <br>
-                New to Gzone ?<a href="#"> Click here to sign up </a>
+                New to Gzone ?<a href="customer_register"> Click here to sign up </a>
         </div>
     </div>
 </div>

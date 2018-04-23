@@ -31,16 +31,16 @@ class User extends CI_Controller{
     public function agent_register(){
 
         $data['title'] = 'Sign Up';
-        $this->form_validation->set_rules('name', 'Name', 'required');
-        $this->form_validation->set_rules('name', 'Name', 'required');
+        $this->form_validation->set_rules('fname', 'FName', 'required');
+        $this->form_validation->set_rules('lname', 'LName', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|callback_check_email_exists');
-        $this->form_validation->set_rules('zipcode', 'Mobile Number ', 'required|regex_match[/^[0-9]{10}$/]'); //{10} for 10 digits number
-        $this->form_validation->set_rules('name', 'Name', 'required');
-        $this->form_validation->set_rules('name', 'Name', 'required');
-        $this->form_validation->set_rules('name', 'Name', 'required');
+        $this->form_validation->set_rules('pnumber', 'Mobile Number ', 'required|regex_match[/^[0-9]{10}$/]'); //{10} for 10 digits number
+        $this->form_validation->set_rules('bussname', 'BussinessName', 'required');
+        $this->form_validation->set_rules('nic', 'NIC', 'required');
+        $this->form_validation->set_rules('lic', 'License', 'required');
         $this->form_validation->set_rules('username', 'Username', 'required|callback_check_username_exists');
-        $this->form_validation->set_rules('password', 'Password', 'required');
-        $this->form_validation->set_rules('password2', 'Confirm Password', 'matches[password]');
+        $this->form_validation->set_rules('pwd', 'Password', 'required');
+        $this->form_validation->set_rules('repwd', 'Confirm Password', 'matches[pwd]');
 
 
 
@@ -51,8 +51,8 @@ class User extends CI_Controller{
             $this->load->view('templates/footer');
         } else {
             // Encrypt password
-            $enc_password = md5($this->input->post('password'));
-            $this->user_model->register($enc_password);
+            $enc_password = md5($this->input->post('pwd'));
+            $this->user_model->agent_register($enc_password);
             // Set message
             $this->session->set_flashdata('user_registered', 'You are now registered, login again to confirm');
             redirect('user/login');
