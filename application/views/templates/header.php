@@ -3,8 +3,13 @@
 
 <head>
     <title>Gzone Technologies</title>
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/styles/style.css" media="all"/>
+
 	<link href="<?php echo base_url(); ?>/assets/css/font-awesome.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/styles/style.css" media="all"/>
 </head>
 
 <body>
@@ -36,11 +41,36 @@
             </div>
         </div>
 
-        <a href="view_cart.php"><button class="view-cart" ><i class="fa fa-cart-arrow-down"></i></button></a>
+<!--        <a href="--><?php //echo base_url('Cart/view_cart'); ?><!--">-->
+            <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#exampleModal"
+            onclick="javascript:opencart()" >
+            <span>
+      <i class="fa fa-cart-arrow-down"></i>( <span class="cartcount"><?php echo count($this->cart->contents());  ?></span> )
+    </span>
+        </button>
+<!--        </a>-->
         <a href="<?php echo base_url('User/logout'); ?>">(Logged in as <?php echo ($this->session->userdata('username')); ?>) Logout</a>
     <?php endif; ?>
 </div>
 </div>
+
+<script type="text/javascript">
+    function opencart()
+    {
+        $.ajax({
+            type: "POST",
+            url: "<?php echo base_url('Cart/opencart');?>",
+            data: "",
+            success: function (response) {
+                $(".displaycontent").html(response);
+            }
+        });
+    }
+
+</script>
+
+<div class="modal bs-example-modal-lg displaycontent" id="exampleModal" tabindex="-1" ></div>
+
 
 
 
@@ -66,7 +96,7 @@
 <!--Botttom header-->
 <div class="header_bottom">
 	<div class="container">
-		<a href="index.php"><img src="<?php echo base_url(); ?>/assets/images/logo.png" id="logo"></a>
+		<a href="<?php echo base_url('Pages/index'); ?>"><img src="<?php echo base_url(); ?>/assets/images/logo.png" id="logo"></a>
 			<div class="search_bar">
 				<form method="get" action="results.php" enctype="multipart/form-data">
 					<input type="search" name="user_query" placeholder="Search..." required="">
