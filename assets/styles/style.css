@@ -680,6 +680,20 @@ li .dropdown {
     text-decoration: none;
 }
 
+#overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    min-height: 100%;
+    z-index: 10;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+
+}
+
 
 
 

@@ -22,14 +22,14 @@
                 <img src="<?php echo base_url(); ?>/assets/images/s3.jpg" style="width:100%">
             </div>
         </div>
-    </div>
+
 
     <div style="text-align:center">
         <span class="dot active"></span>
         <span class="dot"></span>
         <span class="dot"></span>
     </div>
-
+    </div>
     <script>
 
         var slideIndex = 0;
