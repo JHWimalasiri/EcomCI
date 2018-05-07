@@ -1,29 +1,24 @@
 
 <div class="main_content">
-    <div class="reg">
-    <form name="billing" method="post" action="<?php echo site_url('welcome/save_order') ?>" >
-        <div align="center">
-            <h1 align="center">Billing Info</h1>
-            <table border="0" cellpadding="2px">
-<!--                <tr><td>Order Total:</td><td><strong>INR --><?php //echo $grand_total; ?><!--</strong></td></tr>-->
-                <tr><td>Your Name:</td><td><input type="text" name="name" required=""/></td></tr>
-                <tr><td>Address:</td><td><input type="text" name="address" required="" /></td></tr>
-                <tr><td>Email:</td><td><input type="text" name="email" required="" /></td></tr>
-                <tr><td>Phone:</td><td><input type="text" name="phone"  required="" /></td></tr>
-                <tr><td><a class ='fg-button teal' id='back' href="<?php echo site_url(); ?>">Back</a></td>
-                    <td><input class ='fg-button teal' type="submit" value="Place Order" /></td>
-                </tr>
 
-            </table>
-        </div>
-    </form>
+    <?php
+    $grand_total = 0;
+    // Calculate grand total.
+    if ($cart = $this->cart->contents()):
+        foreach ($cart as $data):
+            $grand_total = $grand_total + $data['subtotal'];
+        endforeach;
+    endif;
+    ?>
 
         <form name="billing" method="post" action="<?php echo site_url('welcome/save_order') ?>" >
         <div class="reg">
             <div class="container">
-                <h2 class="heading_reg">Deliver Details</h2>
+                <h2 class="heading_reg">Order Details</h2>
                 <div class="reg_form_grid">
                     <ul>
+                        <li><label for="total"> <b> Order Total: LKR <?php echo $grand_total; ?> </b> </label></li>
+                        <br>
                         <li><label for="name"> <b> Name <span class="req">*</span></b> </label></li>
                         <li><input type="text" size="50" name="username" id="username" required autocomplete="off"></li>
                         <br>
