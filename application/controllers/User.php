@@ -6,7 +6,7 @@ class User extends CI_Controller{
 
         $data['title'] = 'Sign Up';
         $this->form_validation->set_rules('username', 'username', 'required|callback_check_username_exists');
-        $this->form_validation->set_rules('email', 'email', 'required|callback_check_email_exists');
+        $this->form_validation->set_rules('email', 'email', 'required|valid_email|xss_clean|callback_check_email_exists');
         $this->form_validation->set_rules('pwd', 'Password', 'required');
         $this->form_validation->set_rules('repwd', 'Confirm Password', 'matches[pwd]');
 
@@ -33,7 +33,7 @@ class User extends CI_Controller{
         $data['title'] = 'Sign Up';
         $this->form_validation->set_rules('fname', 'FName', 'required');
         $this->form_validation->set_rules('lname', 'LName', 'required');
-        $this->form_validation->set_rules('email', 'Email', 'required|callback_check_email_exists');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|xss_clean|callback_check_email_exists');
         $this->form_validation->set_rules('pnumber', 'Mobile Number ', 'required|regex_match[/^[0-9]{10}$/]'); //{10} for 10 digits number
         $this->form_validation->set_rules('bussname', 'BussinessName', 'required');
         $this->form_validation->set_rules('nic', 'NIC', 'required');

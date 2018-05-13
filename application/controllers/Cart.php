@@ -92,4 +92,8 @@ public function view_product(){
         $this->load->view('templates/footer');
     }
 
+    function billing_success(){
+
+    }
+
 }

@@ -46,7 +46,7 @@
                             <center><img class="image<?php echo $data['product_id'] ?>" rel="<?php echo $data['product_image'] ?>"
                                  src="<?php echo base_url(); ?>/product_images/<?php echo $data['product_image'] ?>" width='300' height='300'
                                  alt="<?php echo $data['product_id'] ?>"></center>
-                            <span class="tile-overlay"></span>
+<!--                            <span class="tile-overlay"></span>-->
                     <br>
                             <p>Available Quantity <?php echo $data['product_quantity']; ?></p>
                             <br>
