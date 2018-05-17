@@ -12,20 +12,24 @@
     ?>
 
 <!--        <form name="billing" method="post" action="--><?php //echo site_url('welcome/save_order') ?><!--" >-->
-            <form action='https://sandbox.2checkout.com/checkout/purchase'  method='post'>
+<!--            <form action='https://sandbox.2checkout.com/checkout/purchase'  method='post'>-->
+                <form action='https://www.2checkout.com/checkout/purchase' method='post'>
         <div class="reg">
             <div class="container">
                 <h2 class="heading_reg">Order Details</h2>
                 <div class="reg_form_grid">
                     <ul>
                         <li>
-                            <input type='hidden' name='sid' value='901379406' />
+<!--                            <input type='hidden' name='sid' value='901379406' />-->
+                            <input type='hidden' name='sid' value='203706179' />
                             <input type='hidden' name='mode' value='2CO' />
                             <input type='hidden' name='li_0_type' value='product' />
                             <input type='hidden' name='li_0_name' value='invoice123' />
                             <input type='hidden' name='li_0_price' value='<?php echo $grand_total; ?>' />
-<!--                            <input type='hidden' name='demo' value='Y' />-->
+                            <input type="hidden" name='x_receipt_link_url' value='http://www.facebook.com'/>
+                            <input type='hidden' name='demo' value='Y' />
                             <input type='hidden' name='country' value='Sri Lanka' />
+                            <input type='hidden' name='order_id' value='<?php echo $order_id; ?>' />
                         </li>
                         <br>
                         <li><label for="name"> <b> Name <span class="req">*</span></b> </label></li>

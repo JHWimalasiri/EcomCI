@@ -51,4 +51,35 @@ class Cart_model extends CI_Model {
         }
     }
 
+    function save_order($order){
+        $this->db->insert('order', $order);
+        $id = $this->db->insert_id();
+        return $id;
+    }
+
+    function save_order_details($orderData){
+
+        $order_detail = array(
+            'order_id' => $orderData['order_id'],
+            'product_id' => $orderData['product_id'],
+            'quantity' => $orderData['qty'],
+            'price' => $orderData['price']
+
+        );
+
+        $this->db->insert('order_has_product', $order_detail);
+
+
+    }
+
+    function complete_order($order_id){
+
+        $this->db->where('order_id',$order_id);
+        $this->db->set('status','0');
+        $this->db->update('order');
+
+    }
+
+
+
 }
